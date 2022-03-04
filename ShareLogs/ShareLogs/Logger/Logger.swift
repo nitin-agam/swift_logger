@@ -35,11 +35,15 @@ class Logger: NSObject {
     
     
     // MARK: - Initializer
-    override init() {
-        super.init()
-        
+    private override init() {}
+    
+    func addOSLogger() {
+        addOSLogger(with: LogFormatter())
+    }
+    
+    private func addOSLogger(with logFormatter: DDLogFormatter) {
         // Add OS Logger
-        DDOSLogger.sharedInstance.logFormatter = LogFormatter()
+        DDOSLogger.sharedInstance.logFormatter = logFormatter
         DDLog.add(DDOSLogger.sharedInstance)
         
         /*
